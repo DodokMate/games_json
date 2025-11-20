@@ -1,0 +1,19 @@
+{
+  "name": "games_json",
+  "version": "1.0.0",
+  "description": "Games lekérések",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DodokMate/games_json.git"
+  },
+  "author": "Dodok Máté",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DodokMate/games_json/issues"
+  },
+  "homepage": "https://github.com/DodokMate/games_json#readme"
+}
