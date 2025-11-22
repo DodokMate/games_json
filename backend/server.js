@@ -145,6 +145,78 @@ app.get("/api/shooter150", (req, res) => {
     console.log(shooter150Jatekok);
 });
 
+//13. feladat: star vagy galaxy van a nevében
+app.get("/api/stargalaxy", (req, res) => {
+    console.log(`[${new Date().toLocaleTimeString()}] /api/stargalaxy hívás érkezett!`);
+
+    const stargalaxy = data.results.filter(game => game.nev.includes("Star") || game.nev.includes("Galaxy"));
+    res.json({results: stargalaxy});
+    console.log(stargalaxy); 
+});
+
+//14. feladat: bevétel pontosan 50 000 000
+app.get("/api/otvenmilla", (req,res) => {
+    console.log(`[${new Date().toLocaleTimeString()}]/api/otvenmilla hívás érkezett!`);
+
+    const otvenmillasJatekok = data.results.filter(game => game.osszbevetel == 50000000);
+    res.json({results: otvenmillasJatekok});
+    console.log(otvenmillasJatekok);
+});
+
+//15. feladat: műfaja strategy és kiadási év 2010 után
+app.get("/api/strategyafter2010", (req,res) => {
+    console.log(`[${new Date().toLocaleTimeString()}]/api/strategyafter2010 hívás érkezett!`);
+
+    const strategyketezertiz = data.results.filter(game => game.mufaj.includes("Strategy") && game.megjelenes_eve > 2010);
+    res.json({results: strategyketezertiz});
+    console.log(strategyketezertiz);
+});
+
+//16. feladat: címe The szóval kezdődik
+app.get("/api/thekezdes", (req,res) => {
+    console.log(`[${new Date().toLocaleTimeString()}]/api/thekezdes hívás érkezett!`);
+
+    const thekezdesJatekok = data.results.filter(game => game.nev.startsWith("The"));
+    res.json({results: thekezdesJatekok});
+    console.log(thekezdesJatekok);
+});
+
+//17. feladat: racing vagy sport műfajú
+app.get("/api/racingorsport", (req,res) => {
+    console.log(`[${new Date().toLocaleTimeString()}]/api/racingorsport hívás érkezett!`);
+    
+    const racingorsport = data.results.filter(game => game.mufaj.includes("Racing") || game.mufaj.includes("Sport"));
+    res.json({results: racingorsport});
+    console.log(racingorsport);
+});
+
+//18. feladat: bevétel ksiebb mint 20 000 000
+app.get("/api/huszmillaalatt", (req,res) => {
+    console.log(`[${new Date().toLocaleTimeString()}]/api/huszmillaalatt hívás érkezett!`);
+    
+    const huszmillaalatt = data.results.filter(game => game.osszbevetel < 20000000);
+    res.json({results: huszmillaalatt});
+    console.log(huszmillaalatt);
+});
+
+//19. feladat: 1980 és 1989 között megjelent játékok
+app.get("/api/nyolcvanasevek", (req, res) => {
+    console.log(`[${new Date().toLocaleTimeString()}] /api/nyolcvanasevek hívás érkezett!`);
+
+    const nyolcvanasevek = data.results.filter(game => game.megjelenes_eve < 1989 && game.megjelenes_eve > 1980);
+    res.json(!data.results ? { results: nyolcvanasevek } : "Nincs ilyen játék!" );
+    console.log(nyolcvanasevek.length ? nyolcvanasevek : "Nincs ilyen játék!");
+});
+
+//20. feladat: műfaj simulation és a cím tartalmazza a city szót
+app.get("/api/citysimulation", (req, res) => {
+    console.log(`[${new Date().toLocaleTimeString()}] /api/citysimulation hívás érkezett!`);
+
+    const citysimulation = data.results.filter(game => game.mufaj.includes("Simulation") && game.nev.includes("city"));
+    res.json(data.length ? { results: citysimulation } : {message: "Nincs ilyen játék!"} );
+    console.log(citysimulation.length ? citysimulation : "Nincs ilyen játék!");
+});
+
 //!Szerver futtatása
 app.use(express.static(path.join(__dirname, '../frontend'))); //?frontend mappa tartalmának betöltése az oldal működéséhez
 app.listen(port, ip, () => {
