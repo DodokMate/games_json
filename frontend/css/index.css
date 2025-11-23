@@ -1,0 +1,40 @@
+h1 {
+    color: purple;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+button {
+    color: purple;
+    border: solid 1px purple;
+    font-weight: bold;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: purple;
+    color: white;
+}
+
+.card {
+    width: 300px;
+    border: 5px solid transparent;
+    border-image: linear-gradient(45deg, red, yellow, green, cyan, blue, magenta, red);
+    border-image-slice: 1;
+    font-weight: bold;
+    transition: 1s;
+}
+
+.card:hover{
+    background-image: linear-gradient(black, lightgrey);
+    color: white;
+    transform: scale(105%);
+    transition: 1s;
+}
+
+@keyframes animate-border {
+    to {
+        border-image: linear-gradient(405deg, red, yellow, green, cyan, blue, magenta, red);
+    }
+}

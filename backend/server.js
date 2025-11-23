@@ -38,12 +38,21 @@ const endpoints = require('./api/api.js');
 const { request } = require('http');
 app.use('/api', endpoints);
 
+//Összes adat
+app.get("/api/osszesadat", (req, res) => {
+    console.log(`[${new Date().toLocaleTimeString()}] /api/osszesadat hívás érkezett!`);
+
+    res.json({ results : data.results})
+    console.log(data.results);
+});
+
 //1. feladat: RPG játékok lekérése
 app.get("/api/rpg", (req, res) => {
     console.log(`[${new Date().toLocaleTimeString()}] /api/rpg hívás érkezett!`);
 
-    res.json({ results : data.results})
-    console.log(data.results);
+    const rpgjatekok = data.results.filter(game => game.mufaj.includes("RPG"));
+    res.json({ results : rpgjatekok});
+    console.log(rpgjatekok);
 });
 
 //2. feladat: bevétel nagyobb mint 100 000 000
